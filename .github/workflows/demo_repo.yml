@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Auto deployment of Demo-repo
+name: Auto deployment of "Demo-repo"
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -11,23 +11,23 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    # The type of runner that the job will run on. yani kis opreting system pr ye workflow kam kry ga.  
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2 #ye ek built-in action he jisy hm asani k liy use krty hn, ye hamy sary basic technical kam khud kr k de deta he. 
 
     # Runs a single command using the runners shell
-    - name: Installing node
-      uses: actions/setup-node@v2-beta
+    - name: Installing node #ye hamry action ka tag-name he, ye ham apni marzi sy action k mutabiq rkhty hn.
+      uses: actions/setup-node@v2-beta # ye b ek built-in action h, node js ko install krny k liy.
       with:
-        node-version: 12  
+        node-version: 12  # hm ny node ka virsion define krdia.
 
     # Runs a set of commands using the runners shell
     - name: Installing surge
-      run: npm install -g surge # -g stands for "global" yani har jaga kam kry na k spacific folder me.
-      
+      run: npm install -g surge # hmary pas surge install krny ka koi built-in action ni h, is liy hm manually install kren gy. yaha: -g stands for "global" yani har jaga kam kry na k spacific folder me.
+    # 3rd action:  
     - name: deploying using surge
       run: surge ./ Demo-repo.surge.sh --token ${{ secrets.SURGE_TOKEN }}
