@@ -27,7 +27,7 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Installing surge
-      run: npm install -g surge
+      run: npm install -g surge # -g stands for "global" yani har jaga kam kry na k spacific folder me.
       
     - name: deploying using surge
       run: surge ./ Demo-repo.surge.sh --token ${{ secrets.SURGE_TOKEN }}
